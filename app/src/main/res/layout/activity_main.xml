@@ -1,18 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="horizontal"
     tools:context=".MainActivity">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-</android.support.constraint.ConstraintLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent">
+        <pers.lin.animations.NumberRain
+            app:numberRain_textSize="12sp"
+            app:numberRain_color="#76FF03"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp" />
+        <pers.lin.animations.NumberRain
+            app:numberRain_textSize="32sp"
+            app:numberRain_color="#FF4081"
+            app:numberRain_backgroundTint="#B388FF"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp" />
+        <pers.lin.animations.NumberRain
+            app:numberRain_backgroundTint="#CCFF90"
+            app:numberRain_textSize="14sp"
+            app:numberRain_randomColor="true"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:layout_width="0dp"
+        android:layout_height="match_parent">
+        <pers.lin.animations.NumberRain
+            app:numberRain_textSize="20sp"
+            app:numberRain_randomColor="true"
+            app:numberRain_backgroundTint="#FF6E40"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp" />
+        <pers.lin.animations.NumberRain
+            app:numberRain_textSize="12sp"
+            app:numberRain_spaceX="10dp"
+            app:numberRain_spaceY="10dp"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp" />
+        <pers.lin.animations.NumberRain
+            app:numberRain_textSize="16sp"
+            app:numberRain_style="Decimal"
+            app:numberRain_backgroundTint="@android:color/transparent"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp" />
+    </LinearLayout>
+</LinearLayout>

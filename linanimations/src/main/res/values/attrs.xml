@@ -57,8 +57,25 @@
         <attr name="startColor" format="color"/>
         <attr name="centerColor" format="color"/>
         <attr name="endColor" format="color"/>
-            <attr name="FlowSpeed" format="integer"/>
+        <attr name="FlowSpeed" format="integer"/>
         <attr name="colorGradient" format="boolean"/>
         <attr name="flowRadius" format="integer"/>
+    </declare-styleable>
+    <declare-styleable name="NumberRain">
+        <attr name="numberRain_spaceX" format="dimension"/>
+        <attr name="numberRain_spaceY" format="dimension"/>
+        <attr name="numberRain_textSize" format="dimension"/>
+        <attr name="numberRain_minCount" format="integer"/>
+        <attr name="numberRain_maxCount" format="integer"/>
+        <attr name="numberRain_color" format="color"/>
+        <attr name="numberRain_backgroundTint" format="color"/>
+        <attr name="numberRain_minSpeed" format="integer"/>
+        <attr name="numberRain_maxSpeed" format="integer"/>
+        <attr name="numberRain_randomColor" format="boolean"/>
+        <attr name="numberRain_delay" format="integer"/>
+        <attr name="numberRain_style">
+            <enum name="binary" value="2"/>
+            <enum name="Decimal" value="10"/>
+        </attr>
     </declare-styleable>
 </resources>
