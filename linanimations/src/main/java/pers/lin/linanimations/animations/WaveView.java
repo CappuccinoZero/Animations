@@ -290,28 +290,54 @@ public class WaveView extends AnimationView {
         }
     }
 
-    public void setParcent(int parcent){
-        this.parcent = parcent;
+    public void setParcent(float parcent){
+        if(parcent<=1)
+            this.parcent = parcent;
+        else
+            this.parcent = 1;
     }
 
     public void addParcent(float num){
-        if(parcent+num>=0&&parcent+num<=1)
-            parcent+=num;
+        if(parcent+num>=0&&parcent+num<=1){
+            if(parcent+num<=1&&parcent+num>=0){
+                parcent+=num;
+            }
+            else if(num>0)
+                parcent = 1;
+            else
+                parcent = 0;
+        }
     }
 
     public void addAnimationParcent(float num){
         if(parcent+num>=0&&parcent+num<=1&&num!=0){
-            oldPacent = parcent;
-            newPacent = parcent+num;
-            animationPacent = 1;
+            if(parcent+num<=1&&parcent+num>=0){
+                oldPacent = parcent;
+                newPacent = parcent+num;
+                animationPacent = 1;
+            }
+            else if(num>0){
+                oldPacent = parcent;
+                newPacent = 1;
+                animationPacent = 1;
+            }
+            else{
+                {
+                    oldPacent = parcent;
+                    newPacent = 0;
+                    animationPacent = 1;
+                }
+            }
         }
     }
 
     public void setAnimationParcent(int parcent){
         if(this.parcent!=parcent) {
-            oldPacent = this.parcent;
-            newPacent = parcent;
-            animationPacent = 1;
+            if(parcent>=0&&parcent<=1){
+                oldPacent = this.parcent;
+                newPacent = parcent;
+                animationPacent = 1;
+            }
         }
     }
 }
