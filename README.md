@@ -45,9 +45,9 @@ start( )|void|开始动画
 pause( )|void|结束动画
 stop( )|void|停止动画
 addParcent(float num)|void|增加百分百高度,无动画
-public void setParcent(int parcent)|void|设置百分百高度，无动画
+public void setParcent(float parcent)|void|设置百分百高度，无动画
 public void addAnimationParcent(float num)|void|增加百分百高度,有动画
-public void setAnimationParcent(int parcent)|void|设置百分百高度，有动画
+public void setAnimationParcent(float parcent)|void|设置百分百高度，有动画
 
 ##
 ### FlowRect 流动矩形
