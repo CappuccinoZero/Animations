@@ -45,7 +45,7 @@ asBackground|color|作为背景显示(显示于最底层)
 start( )|void|开始动画
 pause( )|void|结束动画
 stop( )|void|停止动画
-setAsBackground(int color)|void|设置背景
+setAsBackground(int color)|void|(需先设置xml)设置背景颜色
 addParcent(float num)|void|增加百分百高度,无动画
 public void setParcent(float parcent)|void|设置百分百高度，无动画
 public void addAnimationParcent(float num)|void|增加百分百高度,有动画
@@ -67,13 +67,14 @@ endColor|color|渐变结束颜色
 FlowSpeed|integer|流动速度
 colorGradient|Boolean|是否渐变,无渐变只有startcolor有效
 flowRadius|integer|矩形圆角数值
+asBackground|color|作为背景显示(显示于最底层)
 #### 方法描述
 方法名|返回|描述
 -|:-:|-
 start( )|void|开始动画
 pause( )|void|结束动画
 stop( )|void|停止动画
-setAsBackground(int color)|void|作为背景显示(显示于最底层)
+setAsBackground(int color)|void|(需先设置xml)设置背景颜色
 
 ##
 ### RippleView 波纹涟漪
@@ -89,14 +90,14 @@ gradient|enum(deep,shallow)|渐变程度
 locate|enum(9个位置)|圆心位置
 rateOfChange|enum(none,slow,normal,high)|波纹从浅到深效果
 style|enum(in,out)|波纹风格
-asBackground|color|作为背景显示
+asBackground|color|作为背景显示(显示于最底层)
 #### 方法描述
 方法名|返回|描述
 -|:-:|-
 start( )|void|开始动画
 pause( )|void|结束动画
 stop( )|void|停止动画
-setAsBackground(int color)|void|作为背景显示(显示于最底层)
+setAsBackground(int color)|void|(需先设置xml)设置背景颜色
 
 ##
 ### NumberRain 数字雨
@@ -122,4 +123,4 @@ asBackground|color|作为背景显示(显示于最底层)
 start( )|void|开始动画
 pause( )|void|结束动画
 stop( )|void|停止动画
-setAsBackground(int color)|void|设置背景
+setAsBackground(int color)|void|(需先设置xml)设置背景颜色
