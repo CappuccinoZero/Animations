@@ -38,7 +38,6 @@ public class FlowRect extends AnimationView
     private float moveDistance;
     private LinearGradient gradient;
 
-    private int asBackground;
     private float rectHeight;//矩形高度
     private float spaceX;//x方向的间距
     private float spaceY;//y方向的间距

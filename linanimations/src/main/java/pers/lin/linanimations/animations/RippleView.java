@@ -55,7 +55,6 @@ public class RippleView extends AnimationView {
     }
 
 
-    private int asBackground;//背景颜色
     private int color ;//颜色
     private int speed;//扩散速度
     private int density;//两个圈的间隔

@@ -50,7 +50,6 @@ public class WaveView extends AnimationView {
     private int viewSize;
     private int waveNum;
 
-    private int asBackground;
     private float parcent;//高度百分百
     private int speed;//速度
     private int backgroundTint;//背景颜色

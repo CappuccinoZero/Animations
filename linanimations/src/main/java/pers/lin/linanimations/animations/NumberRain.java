@@ -169,7 +169,6 @@ public class NumberRain extends AnimationView {
     private int[] colors;
 
     /**属性**/
-    private int asBackground;
     private int spaceX;//x方向间距
     private int spaceY;//y方向间距
     private int textSize;//文字大小
