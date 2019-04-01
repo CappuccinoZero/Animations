@@ -165,7 +165,6 @@ public class NumberRain extends AnimationView {
     private int textMaxLen;
     private Paint paint;
     private Paint bgPaint;
-    private Paint clearPaint;
     private int[] colors;
 
     /**属性**/

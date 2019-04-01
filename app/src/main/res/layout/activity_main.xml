@@ -14,13 +14,7 @@
         android:textSize="32sp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
-    <pers.lin.animations.RippleView
-        android:id="@+id/mView"
-        android:layout_centerInParent="true"
-        app:isGradient="true"
-        app:isFill="true"
-        app:color="#EA80FC"
-        app:style="in"
+    <pers.lin.linanimations.animations.FlowRect
         android:layout_width="400dp"
         android:layout_height="400dp" />
     <Button

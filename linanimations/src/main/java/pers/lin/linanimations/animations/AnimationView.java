@@ -22,6 +22,7 @@ abstract public class AnimationView extends SurfaceView implements Runnable, Sur
 
     public AnimationView(Context context, AttributeSet attrs) {
         super(context, attrs);
+        initThis();
     }
 
     abstract protected void onDrawingAnimation();

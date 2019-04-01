@@ -74,6 +74,7 @@ public class WaveView extends AnimationView {
     protected void onDrawingAnimation() {
         Canvas canvas = holder.lockCanvas();
         if(canvas!=null) {
+            canvas.drawPaint(clearPaint);
             mBitmap = Bitmap.createBitmap((int) viewWidth, (int) viewHeight, Bitmap.Config.ARGB_8888);
             if(asBackground!=Color.TRANSPARENT)
                 canvas.drawRect(0,0,viewWidth,viewHeight,asPaint);
