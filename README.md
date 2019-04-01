@@ -18,7 +18,7 @@ allprojects {
 #### Module build.gradle
 ```
 dependencies {
-	        implementation 'com.github.Zhouyulin1220:Animations:1.05'
+	        implementation 'com.github.Zhouyulin1220:Animations:1.06'
 	}
 ```
 ## 
