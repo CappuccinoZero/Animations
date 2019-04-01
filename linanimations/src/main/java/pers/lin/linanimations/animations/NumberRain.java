@@ -39,6 +39,8 @@ public class NumberRain extends AnimationView {
                 Canvas canvas = holder.lockCanvas();
                 if(canvas!=null){
                     canvas.drawPaint(clearPaint);
+                    if(asBackground!=Color.TRANSPARENT)
+                        canvas.drawRect(0,0,viewWidth,viewHeight,asPaint);
                     canvas.drawRect(0,0,viewWidth,viewHeight,bgPaint);
                     for(int i=0;i<textCount;i++){
                         TextBean number = numbers.get(i);
@@ -96,9 +98,15 @@ public class NumberRain extends AnimationView {
         maxSpeed = array.getInteger(R.styleable.NumberRain_numberRain_maxSpeed,60);
         style = array.getInteger(R.styleable.NumberRain_numberRain_style,2);
         delay = array.getInteger(R.styleable.NumberRain_numberRain_delay,2000);
+        asBackground = array.getColor(R.styleable.NumberRain_asBackground,Color.TRANSPARENT);
         array.recycle();
 
-        Log.d("测试debug", "init: 001");
+        if(asBackground!=Color.TRANSPARENT){
+            asPaint = new Paint();
+            asPaint.setColor(asBackground);
+            setZOrderMediaOverlay(true);
+        }
+
         paint = new Paint();
         paint.setTextSize(textSize);
         paint.setColor(color);
@@ -161,6 +169,7 @@ public class NumberRain extends AnimationView {
     private int[] colors;
 
     /**属性**/
+    private int asBackground;
     private int spaceX;//x方向间距
     private int spaceY;//y方向间距
     private int textSize;//文字大小

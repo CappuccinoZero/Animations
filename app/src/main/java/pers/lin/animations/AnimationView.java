@@ -1,6 +1,10 @@
 package pers.lin.animations;
 import android.content.Context;
+import android.graphics.Paint;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 
@@ -10,6 +14,7 @@ abstract public class AnimationView extends SurfaceView implements Runnable, Sur
     protected SurfaceHolder holder;
     protected boolean pause = false;
     protected boolean stop = false;
+    protected Paint clearPaint;
 
     public AnimationView(Context context) {
         super(context);
@@ -17,7 +22,7 @@ abstract public class AnimationView extends SurfaceView implements Runnable, Sur
 
     public AnimationView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        init(context,attrs);
+        initThis();
     }
 
     abstract protected void onDrawingAnimation();
@@ -34,4 +39,9 @@ abstract public class AnimationView extends SurfaceView implements Runnable, Sur
     }
 
     abstract protected void init(Context context, AttributeSet attrs);
+
+    private void initThis(){
+        clearPaint = new Paint();
+        clearPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
+    }
 }

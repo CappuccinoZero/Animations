@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.graphics.LinearGradient;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.graphics.PixelFormat;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.RectF;
@@ -37,6 +38,7 @@ public class FlowRect extends AnimationView
     private float moveDistance;
     private LinearGradient gradient;
 
+    private int asBackground;
     private float rectHeight;//矩形高度
     private float spaceX;//x方向的间距
     private float spaceY;//y方向的间距
@@ -142,6 +144,9 @@ public class FlowRect extends AnimationView
     protected void onDrawingAnimation() {
         Canvas canvas = holder.lockCanvas();
         if(canvas!=null){
+            canvas.drawPaint(clearPaint);
+            if(asBackground!=Color.TRANSPARENT)
+                canvas.drawRect(0,0,viewWidth,viewHeight,asPaint);
             mBitmap = Bitmap.createBitmap((int)viewWidth,(int)viewHeight,Bitmap.Config.ARGB_8888);
             mCanvas = new Canvas(mBitmap);
             mCanvas.drawRect(0,0,viewWidth,viewHeight,bgPaint);
@@ -157,6 +162,8 @@ public class FlowRect extends AnimationView
         this.context = context;
         holder = getHolder();
         holder.addCallback(this);
+        setZOrderOnTop(true);
+        holder.setFormat(PixelFormat.TRANSPARENT);
         mThread = new Thread(this);
         TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.FlowRect);
         rectHeight = array.getDimension(R.styleable.FlowRect_rectHeight,MyUtil.dip_px(300,context));
@@ -170,9 +177,15 @@ public class FlowRect extends AnimationView
         speed = array.getInt(R.styleable.FlowRect_FlowSpeed,10000);
         isGradient = array.getBoolean(R.styleable.FlowRect_colorGradient,false);
         radius = array.getInt(R.styleable.FlowRect_flowRadius,100);
+        asBackground = array.getColor(R.styleable.FlowRect_asBackground,Color.TRANSPARENT);
         array.recycle();
         moveY = 0;
 
+        if(asBackground!=Color.TRANSPARENT){
+            asPaint = new Paint();
+            asPaint.setColor(asBackground);
+            setZOrderMediaOverlay(true);
+        }
         bgPaint = new Paint();
         bgPaint.setAntiAlias(true);
         bgPaint.setColor(backgroundTint);

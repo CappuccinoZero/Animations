@@ -1,4 +1,4 @@
-package pers.lin.linanimations.animations;
+package pers.lin.animations;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -11,10 +11,11 @@ import android.graphics.PorterDuffXfermode;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.SurfaceHolder;
+import android.view.View;
+import android.view.ViewParent;
+
 import java.util.ArrayList;
 import java.util.List;
-import pers.lin.linanimations.R;
-import pers.lin.linanimations.util.MyUtil;
 
 public class RippleView extends AnimationView {
 
@@ -55,6 +56,11 @@ public class RippleView extends AnimationView {
     }
 
 
+    @Override
+    protected void onDraw(Canvas canvas) {
+        super.onDraw(canvas);
+    }
+
     private int asBackground;//背景颜色
     private int color ;//颜色
     private int speed;//扩散速度
@@ -69,6 +75,7 @@ public class RippleView extends AnimationView {
     private boolean firstChange = false;
 
     private Paint paint;
+    private Paint asPaint;
 
     private float viewHeight;
     private float viewWidth;
@@ -95,8 +102,10 @@ public class RippleView extends AnimationView {
                 Canvas canvas = holder.lockCanvas();
                 if(canvas!=null){
                     canvas.drawPaint(clearPaint);
-                    if(asBackground!=Color.TRANSPARENT)
+                    if(asBackground!=Color.TRANSPARENT) {
+                        Log.d(TAG, "onDrawingAnimation: 测试进入了");
                         canvas.drawRect(0,0,viewWidth,viewHeight,asPaint);
+                    }
                     switch (style){
                         case 1:
                             drawInCircle(canvas);
@@ -149,6 +158,7 @@ public class RippleView extends AnimationView {
         paint.setStrokeCap(Paint.Cap.ROUND);
         paint.setAntiAlias(true);
 
+
         ripples = new ArrayList<>();
         Circle circle = new Circle(0,color);
         circle.alpha = 100;
@@ -170,6 +180,8 @@ public class RippleView extends AnimationView {
                 paint.setAlpha((int)(200*f));
             }else paint.setAlpha(circle.alpha);
             canvas.drawCircle(circleX,circleY, circle.width-paint.getStrokeWidth(),paint);
+            if(i==0)
+                Log.d(TAG, "drawCircle: 数据"+circle.width+"  "+maxRadio+"  "+ripples.size());
             if(circle.width - density>=maxRadio){
                 ripples.remove(i);
             }else {
@@ -194,6 +206,7 @@ public class RippleView extends AnimationView {
         canvas.restore();
     }
 
+    private static final String TAG = "RippleView";
     private void drawInCircle(Canvas canvas){
         canvas.save();
         int radius = (int)Math.max(viewWidth/2,viewHeight/2);

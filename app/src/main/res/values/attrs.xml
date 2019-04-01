@@ -17,4 +17,37 @@
             <enum name="Decimal" value="10"/>
         </attr>
     </declare-styleable>
+    <declare-styleable name="RippleView">
+        <attr name="color" format="color"/>
+        <attr name="speed" format="integer"/>
+        <attr name="density" format="dimension"/>
+        <attr name="isFill" format="boolean"/>
+        <attr name="isGradient" format="boolean"/>
+        <attr name="asBackground" format="color"/>
+        <attr name="gradient">
+            <enum name="deep" value="0"/>
+            <enum name="shallow" value="1"/>
+        </attr>
+        <attr name="locate">
+            <enum name="leftTop" value="1"/>
+            <enum name="top" value="2"/>
+            <enum name="rightTop" value="3"/>
+            <enum name="left" value="4"/>
+            <enum name="center" value="5"/>
+            <enum name="right" value="6"/>
+            <enum name="leftBottom" value="7"/>
+            <enum name="bottom" value="8"/>
+            <enum name="rightBottom" value="9"/>
+        </attr>
+        <attr name="rateOfChange">
+            <enum name="none" value="0"/>
+            <enum name="slow" value="1"/>
+            <enum name="normal" value="2"/>
+            <enum name="high" value="3"/>
+        </attr>
+        <attr name="style">
+            <enum name="in" value="1"/>
+            <enum name="out" value="2"/>
+        </attr>
+    </declare-styleable>
 </resources>

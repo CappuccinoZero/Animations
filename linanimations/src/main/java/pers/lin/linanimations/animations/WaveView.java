@@ -50,6 +50,7 @@ public class WaveView extends AnimationView {
     private int viewSize;
     private int waveNum;
 
+    private int asBackground;
     private float parcent;//高度百分百
     private int speed;//速度
     private int backgroundTint;//背景颜色
@@ -75,19 +76,17 @@ public class WaveView extends AnimationView {
         Canvas canvas = holder.lockCanvas();
         if(canvas!=null) {
             mBitmap = Bitmap.createBitmap((int) viewWidth, (int) viewHeight, Bitmap.Config.ARGB_8888);
+            if(asBackground!=Color.TRANSPARENT)
+                canvas.drawRect(0,0,viewWidth,viewHeight,asPaint);
             mCanvas = new Canvas(mBitmap);
             switch (container) {
                 case 0:
                     mCanvas.drawRect(0, 0, viewWidth, viewHeight, bgPaint);
                     break;
                 case 1:
-//                    setZOrderOnTop(true);
-//                    holder.setFormat(PixelFormat.TRANSLUCENT);
                     mCanvas.drawCircle(viewWidth / 2, viewHeight / 2, viewWidth / 2, bgPaint);
                     break;
                 case 2:
-//                    setZOrderOnTop(true);
-//                    holder.setFormat(PixelFormat.TRANSLUCENT);
                     mCanvas.drawPath(getHeartPath(),bgPaint);
                     break;
             }
@@ -109,7 +108,6 @@ public class WaveView extends AnimationView {
         return path;
     }
 
-    private static final String TAG = "WaveView";
     protected void init(Context context,  AttributeSet attrs){
         this.context = context;
         holder = getHolder();
@@ -126,8 +124,14 @@ public class WaveView extends AnimationView {
         container = array.getInt(R.styleable.WaveView_container,0);
         parcent = array.getFloat(R.styleable.WaveView_parcent,0.5f);
         single = array.getBoolean(R.styleable.WaveView_single,false);
+        asBackground = array.getColor(R.styleable.WaveView_asBackground,Color.TRANSPARENT);
         array.recycle();
 
+        if(asBackground!=Color.TRANSPARENT){
+            setZOrderMediaOverlay(true);
+            asPaint = new Paint();
+            asPaint.setColor(asBackground);
+        }
         waveMoveDistance = 0;
         bgPaint = new Paint();
         bgPaint.setColor(backgroundTint);
