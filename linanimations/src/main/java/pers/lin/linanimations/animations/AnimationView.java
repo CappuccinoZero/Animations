@@ -15,6 +15,7 @@ abstract public class AnimationView extends SurfaceView implements Runnable, Sur
     protected boolean stop = false;
     protected Paint clearPaint;
     protected Paint asPaint;
+    protected int asBackground;
     public AnimationView(Context context) {
         super(context);
     }
@@ -41,5 +42,9 @@ abstract public class AnimationView extends SurfaceView implements Runnable, Sur
     private void initThis(){
         clearPaint = new Paint();
         clearPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
+    }
+
+    private void setAsBackground(int color){
+        asBackground = color;
     }
 }
