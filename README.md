@@ -35,9 +35,9 @@ waveWidth|dimension|波浪宽度
 waveHeight|dimension|波兰高度
 parcent|float[0.0-1.0]|占容器量
 randomWave|boolean|是否随机高度
-single|boolean|单层绘制或双层绘制
+single|boolean|单层绘制/双层绘制
 container|enum(rect,circle,heart)|容器形状(矩形,圆形,心形)
-asBackground|color|作为背景显示
+asBackground|color|作为背景显示(显示于最底层)
 
 #### 方法描述
 方法名|返回|描述
@@ -73,7 +73,7 @@ flowRadius|integer|矩形圆角数值
 start( )|void|开始动画
 pause( )|void|结束动画
 stop( )|void|停止动画
-setAsBackground(int color)|void|设置背景
+setAsBackground(int color)|void|作为背景显示(显示于最底层)
 
 ##
 ### RippleView 波纹涟漪
@@ -96,7 +96,7 @@ asBackground|color|作为背景显示
 start( )|void|开始动画
 pause( )|void|结束动画
 stop( )|void|停止动画
-setAsBackground(int color)|void|设置背景
+setAsBackground(int color)|void|作为背景显示(显示于最底层)
 
 ##
 ### NumberRain 数字雨
@@ -115,7 +115,7 @@ numberRain_maxSpeed|integer|最快下降速度
 numberRain_randomColor|boolean|随机颜色
 numberRain_delay|integer|最长延迟时间(ms)
 numberRain_style|enum(binary,Decimal)|风格(二进制,十进制)
-asBackground|color|作为背景显示
+asBackground|color|作为背景显示(显示于最底层)
 #### 方法描述
 方法名|返回|描述
 -|:-:|-
