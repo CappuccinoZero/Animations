@@ -111,17 +111,18 @@ public class FlowRect extends AnimationView
 
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
+        mThread = new Thread(this);
+        stop = false;
         mThread.start();
     }
 
     @Override
     public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
-
     }
 
     @Override
     public void surfaceDestroyed(SurfaceHolder holder) {
-
+        stop = true;
     }
 
     @Override
@@ -143,16 +144,21 @@ public class FlowRect extends AnimationView
     protected void onDrawingAnimation() {
         Canvas canvas = holder.lockCanvas();
         if(canvas!=null){
-            canvas.drawPaint(clearPaint);
-            if(asBackground!=Color.TRANSPARENT)
-                canvas.drawRect(0,0,viewWidth,viewHeight,asPaint);
-            mBitmap = Bitmap.createBitmap((int)viewWidth,(int)viewHeight,Bitmap.Config.ARGB_8888);
-            mCanvas = new Canvas(mBitmap);
-            mCanvas.drawRect(0,0,viewWidth,viewHeight,bgPaint);
-            mCanvas.drawPath(onDrawLeftRect(),rectPaint);
-            mCanvas.drawPath(onDrawRightRect(),rectPaint);
-            canvas.drawBitmap(mBitmap,0,0,null);
-            holder.unlockCanvasAndPost(canvas);
+            try{
+                canvas.drawPaint(clearPaint);
+                if(asBackground!=Color.TRANSPARENT)
+                    canvas.drawRect(0,0,viewWidth,viewHeight,asPaint);
+                mBitmap = Bitmap.createBitmap((int)viewWidth,(int)viewHeight,Bitmap.Config.ARGB_8888);
+                mCanvas = new Canvas(mBitmap);
+                mCanvas.drawRect(0,0,viewWidth,viewHeight,bgPaint);
+                mCanvas.drawPath(onDrawLeftRect(),rectPaint);
+                mCanvas.drawPath(onDrawRightRect(),rectPaint);
+                canvas.drawBitmap(mBitmap,0,0,null);
+            }catch (Exception e){
+                e.printStackTrace();
+            }finally {
+                holder.unlockCanvasAndPost(canvas);
+            }
         }
     }
 
@@ -163,7 +169,6 @@ public class FlowRect extends AnimationView
         holder.addCallback(this);
         setZOrderOnTop(true);
         holder.setFormat(PixelFormat.TRANSPARENT);
-        mThread = new Thread(this);
         TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.FlowRect);
         rectHeight = array.getDimension(R.styleable.FlowRect_rectHeight,MyUtil.dip_px(300,context));
         translationX = array.getDimension(R.styleable.FlowRect_translationX,MyUtil.dip_px(0,context));

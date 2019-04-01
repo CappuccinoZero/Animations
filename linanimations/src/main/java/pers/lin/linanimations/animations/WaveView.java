@@ -207,6 +207,7 @@ public class WaveView extends AnimationView {
 
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
+        mThread = new Thread(this);
         mThread.start();
     }
 
@@ -217,7 +218,7 @@ public class WaveView extends AnimationView {
 
     @Override
     public void surfaceDestroyed(SurfaceHolder holder) {
-
+        stop = false;
     }
 
     @Override

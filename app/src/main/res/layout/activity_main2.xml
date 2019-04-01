@@ -5,23 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
-    android:background="#FFD180"
-    tools:context=".MainActivity">
-    <TextView
-        android:textColor="#B388FF"
-        android:text="GoodMorning"
-        android:layout_centerInParent="true"
-        android:textSize="32sp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-    <pers.lin.linanimations.animations.NumberRain
-        app:flow_asBackground="#fff"
-        app:numberRain_backgroundTint="#00000000"
+    android:background="#FFD180">
+    <pers.lin.linanimations.animations.RippleView
+        android:id="@+id/iview"
+        app:ripple_asBackground="#80D8FF"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
     <Button
         android:layout_centerInParent="true"
-        android:id="@+id/button1"
+        android:id="@+id/button2"
         android:text="设置"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />

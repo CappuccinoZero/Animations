@@ -8,6 +8,7 @@ import android.graphics.Paint;
 import android.graphics.PixelFormat;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
+import android.os.SystemClock;
 import android.util.AttributeSet;
 import android.view.SurfaceHolder;
 import java.util.ArrayList;
@@ -19,6 +20,8 @@ public class RippleView extends AnimationView {
 
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
+        mThread = new Thread(this);
+        stop = false;
         mThread.start();
     }
 
@@ -29,7 +32,7 @@ public class RippleView extends AnimationView {
 
     @Override
     public void surfaceDestroyed(SurfaceHolder holder) {
-
+        stop = true;
     }
 
     @Override
@@ -92,36 +95,39 @@ public class RippleView extends AnimationView {
             if(!pause){
                 Canvas canvas = holder.lockCanvas();
                 if(canvas!=null){
-                    canvas.drawPaint(clearPaint);
-                    if(asBackground!=Color.TRANSPARENT)
-                        canvas.drawRect(0,0,viewWidth,viewHeight,asPaint);
-                    switch (style){
-                        case 1:
-                            drawInCircle(canvas);
-                            break;
-                        case 2:
-                            drawCircle(canvas);
-                            break;
+                    try{
+                        canvas.drawPaint(clearPaint);
+                        if(asBackground!=Color.TRANSPARENT)
+                            canvas.drawRect(0,0,viewWidth,viewHeight,asPaint);
+                        switch (style){
+                            case 1:
+                                drawInCircle(canvas);
+                                break;
+                            case 2:
+                                drawCircle(canvas);
+                                break;
+                        }
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }finally {
+                        if(canvas!=null)
+                            holder.unlockCanvasAndPost(canvas);
                     }
-                    holder.unlockCanvasAndPost(canvas);
                 }
-
+                SystemClock.sleep(16);
             }
         }
     }
 
-    public void setTop(){
-        setZOrderMediaOverlay(true);
-    }
 
     @Override
     protected void init(Context context, AttributeSet attrs) {
+        stop = false;
         this.context =context;
         holder = getHolder();
         setZOrderOnTop(true);
         holder.setFormat(PixelFormat.TRANSPARENT);
         holder.addCallback(this);
-        mThread = new Thread(this);
         TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.RippleView);
         color = array.getColor(R.styleable.RippleView_color, Color.GREEN);
         speed = array.getInt(R.styleable.RippleView_speed,1);
@@ -168,7 +174,7 @@ public class RippleView extends AnimationView {
                 paint.setAlpha((int)(200*f));
             }else paint.setAlpha(circle.alpha);
             canvas.drawCircle(circleX,circleY, circle.width-paint.getStrokeWidth(),paint);
-            if(circle.width - density>=maxRadio){
+            if(circle.width - 2*density>=maxRadio){
                 ripples.remove(i);
             }else {
                 circle.width += speed;

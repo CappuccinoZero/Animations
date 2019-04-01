@@ -38,39 +38,45 @@ public class NumberRain extends AnimationView {
                 Random random = new Random();
                 Canvas canvas = holder.lockCanvas();
                 if(canvas!=null){
-                    canvas.drawPaint(clearPaint);
-                    if(asBackground!=Color.TRANSPARENT)
-                        canvas.drawRect(0,0,viewWidth,viewHeight,asPaint);
-                    canvas.drawRect(0,0,viewWidth,viewHeight,bgPaint);
-                    for(int i=0;i<textCount;i++){
-                        TextBean number = numbers.get(i);
-                        if(number.delay>0){
-                            number.delay -= 16;
-                            continue;
+                    try {
+                        canvas.drawPaint(clearPaint);
+                        if(asBackground!=Color.TRANSPARENT)
+                            canvas.drawRect(0,0,viewWidth,viewHeight,asPaint);
+                        canvas.drawRect(0,0,viewWidth,viewHeight,bgPaint);
+                        for(int i=0;i<textCount;i++){
+                            TextBean number = numbers.get(i);
+                            if(number.delay>0){
+                                number.delay -= 16;
+                                continue;
+                            }
+                            if(number.y>=textMaxLen+viewHeight){
+                                number.y = 0;
+                                number.text = getString();
+                                number.delay = getNumberdelay();
+                                number.speed = getRandomSpeed();
+                                number.color = getRandomColor();
+                                continue;
+                            }
+                            int height = spaceY+textSizeY;
+                            int start = number.y;
+                            if(isRandomColor) paint.setColor(number.color);
+                            for(int j=0;j<number.text.length();j++){
+                                double f = (j+1)/(double)(number.text.length());
+                                f = f*f;
+                                int alpha =(int)(255-255*f);
+                                paint.setAlpha(alpha);
+                                String str = number.text.charAt(j)+"";
+                                canvas.drawText(str,number.x,start,paint);
+                                start -= height;
+                            }
+                            number.y += number.speed;
                         }
-                        if(number.y>=textMaxLen+viewHeight){
-                            number.y = 0;
-                            number.text = getString();
-                            number.delay = getNumberdelay();
-                            number.speed = getRandomSpeed();
-                            number.color = getRandomColor();
-                            continue;
-                        }
-                        int height = spaceY+textSizeY;
-                        int start = number.y;
-                        if(isRandomColor) paint.setColor(number.color);
-                        for(int j=0;j<number.text.length();j++){
-                            double f = (j+1)/(double)(number.text.length());
-                            f = f*f;
-                            int alpha =(int)(255-255*f);
-                            paint.setAlpha(alpha);
-                            String str = number.text.charAt(j)+"";
-                            canvas.drawText(str,number.x,start,paint);
-                            start -= height;
-                        }
-                        number.y += number.speed;
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }finally {
+                        if(canvas!=null)
+                            holder.unlockCanvasAndPost(canvas);
                     }
-                    holder.unlockCanvasAndPost(canvas);
                 }
                 SystemClock.sleep(16);
             }
@@ -83,7 +89,7 @@ public class NumberRain extends AnimationView {
         holder = getHolder();
         holder.addCallback(this);
         setZOrderOnTop(true);
-        getHolder().setFormat(PixelFormat.TRANSLUCENT);
+        getHolder().setFormat(PixelFormat.TRANSPARENT);
         mThread = new Thread(this);
         TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.NumberRain);
         textSize = (int)array.getDimension(R.styleable.NumberRain_numberRain_textSize, MyUtil.dip_px(24,context));
@@ -121,6 +127,8 @@ public class NumberRain extends AnimationView {
 
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
+        mThread = new Thread(this);
+        stop = false;
         mThread.start();
     }
 
@@ -131,7 +139,7 @@ public class NumberRain extends AnimationView {
 
     @Override
     public void surfaceDestroyed(SurfaceHolder holder) {
-
+        stop();
     }
 
     @Override
