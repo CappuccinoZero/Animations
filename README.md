@@ -45,6 +45,7 @@ asBackground|color|作为背景显示
 start( )|void|开始动画
 pause( )|void|结束动画
 stop( )|void|停止动画
+setAsBackground(int color)|void|设置背景
 addParcent(float num)|void|增加百分百高度,无动画
 public void setParcent(float parcent)|void|设置百分百高度，无动画
 public void addAnimationParcent(float num)|void|增加百分百高度,有动画
@@ -72,6 +73,7 @@ flowRadius|integer|矩形圆角数值
 start( )|void|开始动画
 pause( )|void|结束动画
 stop( )|void|停止动画
+setAsBackground(int color)|void|设置背景
 
 ##
 ### RippleView 波纹涟漪
@@ -94,6 +96,7 @@ asBackground|color|作为背景显示
 start( )|void|开始动画
 pause( )|void|结束动画
 stop( )|void|停止动画
+setAsBackground(int color)|void|设置背景
 
 ##
 ### NumberRain 数字雨
@@ -119,3 +122,4 @@ asBackground|color|作为背景显示
 start( )|void|开始动画
 pause( )|void|结束动画
 stop( )|void|停止动画
+setAsBackground(int color)|void|设置背景
