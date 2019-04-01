@@ -91,7 +91,7 @@ style|enum(in,out)|波纹风格
 -|:-:|-
 
 ##
-### RippleView 波纹涟漪
+### NumberRain 数字雨
 #### 属性描述
 属性名|值|描述
 -|:-:|:-
