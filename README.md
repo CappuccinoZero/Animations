@@ -89,8 +89,27 @@ style|enum(in,out)|波纹风格
 #### 方法描述
 方法名|返回|描述
 -|:-:|-
+
+##
+### RippleView 波纹涟漪
+#### 属性描述
+属性名|值|描述
+-|:-:|:-
+numberRain_spaceX|dimension|水平间隔
+numberRain_spaceY|dimension|竖直间隔
+numberRain_textSize|dimension|字体大小
+numberRain_minCount|integer|最短字体数量
+numberRain_maxCount|integer|最长字体数量
+numberRain_color|integer|颜色
+numberRain_backgroundTint|color|背景颜色(可透明)
+numberRain_minSpeed|integer|最小下降速度
+numberRain_maxSpeed|integer|最快下降速度
+numberRain_randomColor|boolean|随机颜色
+numberRain_delay|integer|最长延迟时间(ms)
+numberRain_style|enum(binary,Decimal)|风格(二进制,十进制)
+#### 方法描述
+方法名|返回|描述
+-|:-:|-
 start( )|void|开始动画
 pause( )|void|结束动画
 stop( )|void|停止动画
-
-
