@@ -124,7 +124,7 @@ public class WaveView extends AnimationView {
         container = array.getInt(R.styleable.WaveView_container,0);
         parcent = array.getFloat(R.styleable.WaveView_parcent,0.5f);
         single = array.getBoolean(R.styleable.WaveView_single,false);
-        asBackground = array.getColor(R.styleable.WaveView_asBackground,Color.TRANSPARENT);
+        asBackground = array.getColor(R.styleable.WaveView_wave_asBackground,Color.TRANSPARENT);
         array.recycle();
 
         if(asBackground!=Color.TRANSPARENT){

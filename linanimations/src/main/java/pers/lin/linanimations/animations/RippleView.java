@@ -133,7 +133,7 @@ public class RippleView extends AnimationView {
         gradient = array.getInt(R.styleable.RippleView_gradient,0);
         locate = array.getInt(R.styleable.RippleView_locate,5);
         rateOfChange = array.getInt(R.styleable.RippleView_rateOfChange,1);
-        asBackground = array.getColor(R.styleable.RippleView_asBackground,Color.TRANSPARENT);
+        asBackground = array.getColor(R.styleable.RippleView_ripple_asBackground,Color.TRANSPARENT);
         style = array.getInt(R.styleable.RippleView_style,2);
         array.recycle();
 

@@ -98,7 +98,7 @@ public class NumberRain extends AnimationView {
         maxSpeed = array.getInteger(R.styleable.NumberRain_numberRain_maxSpeed,60);
         style = array.getInteger(R.styleable.NumberRain_numberRain_style,2);
         delay = array.getInteger(R.styleable.NumberRain_numberRain_delay,2000);
-        asBackground = array.getColor(R.styleable.NumberRain_asBackground,Color.TRANSPARENT);
+        asBackground = array.getColor(R.styleable.NumberRain_rain_asBackground,Color.TRANSPARENT);
         array.recycle();
 
         if(asBackground!=Color.TRANSPARENT){

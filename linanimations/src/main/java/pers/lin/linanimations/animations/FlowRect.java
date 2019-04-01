@@ -177,7 +177,7 @@ public class FlowRect extends AnimationView
         speed = array.getInt(R.styleable.FlowRect_FlowSpeed,10000);
         isGradient = array.getBoolean(R.styleable.FlowRect_colorGradient,false);
         radius = array.getInt(R.styleable.FlowRect_flowRadius,100);
-        asBackground = array.getColor(R.styleable.FlowRect_asBackground,Color.TRANSPARENT);
+        asBackground = array.getColor(R.styleable.FlowRect_flow_asBackground,Color.TRANSPARENT);
         array.recycle();
         moveY = 0;
 

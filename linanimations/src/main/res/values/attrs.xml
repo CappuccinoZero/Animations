@@ -6,7 +6,7 @@
         <attr name="density" format="dimension"/>
         <attr name="isFill" format="boolean"/>
         <attr name="isGradient" format="boolean"/>
-        <attr name="asBackground" format="color"/>
+        <attr name="ripple_asBackground" format="color"/>
         <attr name="gradient">
             <enum name="deep" value="0"/>
             <enum name="shallow" value="1"/>
@@ -43,7 +43,7 @@
         <attr name="waveHeight" format="dimension"/>
         <attr name="parcent" format="float"/>
         <attr name="single" format="boolean"/>
-        <attr name="asBackground" format="color"/>
+        <attr name="wave_asBackground" format="color"/>
         <attr name="container">
             <enum name="rect" value="0"/>
             <enum name="circle" value="1"/>
@@ -62,7 +62,7 @@
         <attr name="FlowSpeed" format="integer"/>
         <attr name="colorGradient" format="boolean"/>
         <attr name="flowRadius" format="integer"/>
-        <attr name="asBackground" format="color"/>
+        <attr name="flow_asBackground" format="color"/>
     </declare-styleable>
     <declare-styleable name="NumberRain">
         <attr name="numberRain_spaceX" format="dimension"/>
@@ -76,7 +76,7 @@
         <attr name="numberRain_maxSpeed" format="integer"/>
         <attr name="numberRain_randomColor" format="boolean"/>
         <attr name="numberRain_delay" format="integer"/>
-        <attr name="asBackground" format="color"/>
+        <attr name="rain_asBackground" format="color"/>
         <attr name="numberRain_style">
             <enum name="binary" value="2"/>
             <enum name="Decimal" value="10"/>
