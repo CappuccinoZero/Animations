@@ -44,7 +44,7 @@ abstract public class AnimationView extends SurfaceView implements Runnable, Sur
         clearPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
     }
 
-    private void setAsBackground(int color){
+    public void setAsBackground(int color){
         asBackground = color;
     }
 }
