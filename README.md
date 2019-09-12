@@ -1,8 +1,7 @@
 # Animations
 [![](https://jitpack.io/v/Zhouyulin1220/Animations.svg)](https://jitpack.io/#Zhouyulin1220/Animations)
 
-### 持续更新
-### 这是一个动画库，包含我在空闲时间学习做的一些自定义控件，方便使用
+### 一些包含动画的自定义空间，学习动画时做的，还有许多Bug
 
 ## 
 ## 使用
