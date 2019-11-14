@@ -1,7 +1,7 @@
 # Animations
 [![](https://jitpack.io/v/Zhouyulin1220/Animations.svg)](https://jitpack.io/#Zhouyulin1220/Animations)
 
-### 一些包含动画的自定义空间，学习动画时做的，还有许多Bug
+### 一些包含动画的自定义控件，目的在于学习动画，可能还有许多未知Bug
 
 ## 
 ## 使用
